@@ -1,0 +1,79 @@
+Table book {
+  book_id integer [primary key]
+  title varchar
+  published_dte datetime
+}
+
+Table copy {
+  copy_id integer [primary key]
+  format varchar
+  book_id integer
+  publisher_id integer
+  format_id integer
+}
+
+Table format {
+  format_id integer [primary key]
+  name varchar
+}
+
+Table publisher {
+  publisher_id integer [primary key]
+  name varchar
+}
+
+Table checkout {
+  checkout_id integer [primary key]
+  copy_id integer
+  user_id integer
+  checkout_dte datetime
+  checkin_dte datetime
+  returned bool
+}
+
+Table user {
+  user_id integer [primary key]
+  username varchar
+  password varchar
+  fname varchar
+  lname varchar
+  dob date
+}
+
+Table category {
+  category_id integer [primary key]
+  name varchar
+}
+
+Table book_category {
+  book_category_id integer [primary key]
+  book_id integer
+  category_id integer
+}
+
+Table author {
+  author_id integer [primary  key]
+  fname varchar
+  lname varchar
+  penname varchar
+  dob date
+}
+
+Table author_book {
+  author_book_id  integer [primary key]
+  author_id integer
+  book_id integer
+}
+
+Ref: copy.book_id > book.book_id
+Ref: copy.format_id > format.format_id
+Ref: copy.publisher_id > publisher.publisher_id
+
+Ref: checkout.copy_id > copy.copy_id
+Ref: checkout.user_id > user.user_id
+
+Ref: book_category.book_id > book.book_id
+Ref: book_category.category_id > category.category_id
+
+Ref: author_book.author_id > author.author_id
+Ref: author_book.book_id > book.book_id
