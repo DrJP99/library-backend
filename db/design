@@ -6,7 +6,6 @@ Table book {
 
 Table copy {
   copy_id integer [primary key]
-  format varchar
   book_id integer
   publisher_id integer
   format_id integer
@@ -25,15 +24,15 @@ Table publisher {
 Table checkout {
   checkout_id integer [primary key]
   copy_id integer
-  user_id integer
+  account_id integer
   checkout_dte datetime
   checkin_dte datetime
   returned bool
 }
 
-Table user {
-  user_id integer [primary key]
-  username varchar
+Table account {
+  account_id integer [primary key]
+  accountname varchar
   password varchar
   fname varchar
   lname varchar
@@ -70,7 +69,7 @@ Ref: copy.format_id > format.format_id
 Ref: copy.publisher_id > publisher.publisher_id
 
 Ref: checkout.copy_id > copy.copy_id
-Ref: checkout.user_id > user.user_id
+Ref: checkout.account_id > account.account_id
 
 Ref: book_category.book_id > book.book_id
 Ref: book_category.category_id > category.category_id
