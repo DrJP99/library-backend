@@ -1,0 +1,4 @@
+account_id,username,password,fname,lname,DOB
+100,'john98','john98','John','Smith','1998-09-13'
+101,'drjp99','drjp99','Juan','Gonzalez','1999-10-16'
+102,'phine00','phine00','Josephine','Dixon','2000-10-16'
